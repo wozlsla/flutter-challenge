@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_challenge/widgets/screens/home_screen.dart';
+import 'package:flutter_challenge/screens/home_screen.dart';
 
 void main() {
   runApp(const App());

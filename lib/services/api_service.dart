@@ -5,6 +5,8 @@ import 'package:http/http.dart' as http;
 
 class ApiService {
   static const String baseUrl = 'https://movies-api.nomadcoders.workers.dev';
+  static const String imageBaseUrl = "https://image.tmdb.org/t/p/";
+
   static const String popular = 'popular';
   static const String nowPlaying = 'now-playing';
   static const String upComing = 'coming-soon';
