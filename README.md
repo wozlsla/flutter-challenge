@@ -1,16 +1,25 @@
-# flutter_challenge
+# Flutter_challenge
 
-A new Flutter project.
+Personal Assingments
 
-## Getting Started
+1. **UI clone**  
+   UI clone of a schedule planner iOS app. [commit]
 
-This project is a starting point for a Flutter application.
+</br>  
+</br>
 
-A few resources to get you started if this is your first Flutter project:
+## Results
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Screens (IOS)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- **UI clone**  
+  Preview : [imgur](https://imgur.com/a4UN9mu "imgur")
+
+   <img src = "https://github.com/user-attachments/assets/18e00836-d1b7-48bc-b6d8-6afee86727ff" width="200" height="418">
+
+<br/>  
+<br/>
+
+## Learn Flutter
+
+[Flutter for beginners](https://nomadcoders.co/flutter-for-beginners "NomadCoders")
