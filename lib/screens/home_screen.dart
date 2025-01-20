@@ -28,7 +28,7 @@ class HomeScreen extends StatelessWidget {
           child: Text(
             'Moviestagram',
             style: GoogleFonts.lobster(
-              fontSize: 30,
+              fontSize: Sizes.size32,
               color: Color(0xffF5F5F5),
             ),
           ),
@@ -40,7 +40,7 @@ class HomeScreen extends StatelessWidget {
               onPressed: () {},
               icon: const Icon(
                 Icons.notifications_rounded,
-                size: 34,
+                size: Sizes.size32,
                 color: Color(0xffF5F5F5),
               ),
             ),
@@ -49,16 +49,16 @@ class HomeScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Column(children: [
-          MovieCard(movieState: 'Popular', endpoint: popular),
-          MovieCard(movieState: 'Now Playing', endpoint: nowPlaying),
-          MovieCard(movieState: 'Upcoming', endpoint: upComing),
+          Movie(movieState: 'Popular', endpoint: popular),
+          Movie(movieState: 'Now Playing', endpoint: nowPlaying),
+          Movie(movieState: 'Upcoming', endpoint: upComing),
         ]),
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         backgroundColor: primaryColor,
         selectedItemColor: Colors.white,
-        unselectedItemColor: Color(0xffF5F5F5),
+        unselectedItemColor: Colors.white60,
         showSelectedLabels: false,
         showUnselectedLabels: false,
         items: [

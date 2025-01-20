@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_challenge/consts.dart';
 import 'package:flutter_challenge/models/movie_model.dart';
+import 'package:flutter_challenge/screens/detail_screen.dart';
 import 'package:flutter_challenge/services/api_service.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class MovieCard extends StatelessWidget {
+class Movie extends StatelessWidget {
   final String movieState;
   final Future<List<MovieModel>> endpoint;
 
-  const MovieCard({
+  const Movie({
     super.key,
     required this.movieState,
     required this.endpoint,
@@ -34,18 +35,10 @@ class MovieCard extends StatelessWidget {
                   ),
                 ),
               ),
-              GestureDetector(
-                onTap: () {
-                  print("object");
-                },
-                child: SizedBox(
-                  height: 400,
-                  child: makeList(snapshot),
-                ),
+              SizedBox(
+                height: 400,
+                child: makeList(snapshot),
               )
-              // makeList(snapshot),
-              // Flexible(child: makeList(snapshot)),
-              // Expanded(child: makeList(snapshot)),
             ],
           );
         }
@@ -67,9 +60,21 @@ class MovieCard extends StatelessWidget {
       itemBuilder: (context, index) {
         // print(index);
         var movie = snapshot.data![index];
-        return Column(
-          children: [
-            Container(
+        return GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DetailScreen(
+                  movieState: movieState,
+                  movie: movie,
+                ),
+              ),
+            );
+          },
+          child: Column(
+            children: [
+              Container(
                 width: 200,
                 // height: 200,
                 clipBehavior: Clip.hardEdge,
@@ -77,24 +82,18 @@ class MovieCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: Image.network(
-                    '${ApiService.imageBaseUrl}/w200${movie.poster}')),
-            Text(
-              movie.title,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: Sizes.size16,
-                fontWeight: FontWeight.w600,
+                    '${ApiService.imageBaseUrl}/w200${movie.poster}'),
               ),
-            ),
-            Text(
-              '${movie.vote}',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: Sizes.size16,
-                fontWeight: FontWeight.w600,
+              Text(
+                movie.title,
+                style: GoogleFonts.aBeeZee(
+                  color: Colors.white54,
+                  fontSize: Sizes.size16,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         );
       },
       separatorBuilder: (context, index) => Gaps.h16,

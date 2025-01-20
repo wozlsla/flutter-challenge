@@ -12,7 +12,7 @@ class ApiService {
   static const String upComing = 'coming-soon';
 
   static Future<List<MovieModel>> _getMovies(String endpoint) async {
-    List<MovieModel> moveiInstances = [];
+    List<MovieModel> movieInstances = [];
 
     final url = Uri.parse('$baseUrl/$endpoint');
     final response = await http.get(url);
@@ -20,9 +20,9 @@ class ApiService {
     if (response.statusCode == 200) {
       final List<dynamic> movies = jsonDecode(response.body)['results'];
       for (var movie in movies) {
-        moveiInstances.add(MovieModel.fromJson(movie));
+        movieInstances.add(MovieModel.fromJson(movie));
       }
-      return moveiInstances;
+      return movieInstances;
     }
     throw Error();
   }
@@ -33,4 +33,16 @@ class ApiService {
       _getMovies(nowPlaying);
 
   static Future<List<MovieModel>> getUpComingMovies() => _getMovies(upComing);
+
+  static Future<MovieDetailModel> getMovieDetailById(int id) async {
+    final url = Uri.parse('$baseUrl/movie?id=$id');
+    final response = await http.get(url);
+
+    if (response.statusCode == 200) {
+      // print(response.body);
+      final Map<String, dynamic> movie = jsonDecode(response.body);
+      return MovieDetailModel.fromJson(movie);
+    }
+    throw Error();
+  }
 }
