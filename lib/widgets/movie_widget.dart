@@ -81,8 +81,8 @@ class Movie extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                 ),
-                child: Image.network(
-                    '${ApiService.imageBaseUrl}/w200${movie.poster}'),
+                child:
+                    Image.network('${ApiService.imageBaseUrl}${movie.poster}'),
               ),
               Text(
                 movie.title,
