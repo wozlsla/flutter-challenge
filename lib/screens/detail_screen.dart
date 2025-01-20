@@ -38,11 +38,11 @@ class _DetailScreenState extends State<DetailScreen> {
             '${ApiService.imageBaseUrl}${widget.movie.poster}',
           ),
           fit: BoxFit.cover,
-          opacity: 0.6,
+          opacity: 0.8,
         ),
       ),
       child: Scaffold(
-        backgroundColor: Colors.black.withValues(alpha: 0.3),
+        backgroundColor: Colors.black.withValues(alpha: 0.2),
         // backgroundColor: Colors.transparent,
         appBar: AppBar(
           backgroundColor: Colors.transparent,

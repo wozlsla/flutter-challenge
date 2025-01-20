@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_challenge/consts.dart';
 import 'package:flutter_challenge/models/movie_model.dart';
 import 'package:flutter_challenge/services/api_service.dart';
+import 'package:flutter_challenge/widgets/movie_sub_widget.dart';
 import 'package:flutter_challenge/widgets/movie_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -50,8 +51,8 @@ class HomeScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(children: [
           Movie(movieState: 'Popular', endpoint: popular),
-          Movie(movieState: 'Now Playing', endpoint: nowPlaying),
-          Movie(movieState: 'Upcoming', endpoint: upComing),
+          SubMovie(movieState: 'Now Playing', endpoint: nowPlaying),
+          SubMovie(movieState: 'Upcoming', endpoint: upComing),
         ]),
       ),
       bottomNavigationBar: BottomNavigationBar(

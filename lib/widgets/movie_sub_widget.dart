@@ -5,11 +5,11 @@ import 'package:flutter_challenge/screens/detail_screen.dart';
 import 'package:flutter_challenge/services/api_service.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Movie extends StatelessWidget {
+class SubMovie extends StatelessWidget {
   final String movieState;
   final Future<List<MovieModel>> endpoint;
 
-  const Movie({
+  const SubMovie({
     super.key,
     required this.movieState,
     required this.endpoint,
@@ -36,12 +36,9 @@ class Movie extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 380,
+                height: 250,
                 child: makeList(snapshot),
-              ),
-              SizedBox(
-                height: 20,
-              ),
+              )
             ],
           );
         }
@@ -61,7 +58,6 @@ class Movie extends StatelessWidget {
         vertical: 10,
       ),
       itemBuilder: (context, index) {
-        // print(index);
         var movie = snapshot.data![index];
         return GestureDetector(
           onTap: () {
@@ -75,44 +71,25 @@ class Movie extends StatelessWidget {
               ),
             );
           },
-          child: Container(
-            width: 200,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              color: Colors.white.withValues(alpha: 0.15),
-            ),
-            // clipBehavior: Clip.hardEdge,
-            child: Column(
-              children: [
-                Container(
-                  width: 200,
-                  // height: 200,
-                  clipBehavior: Clip.hardEdge,
-                  decoration: BoxDecoration(
-                    borderRadius:
-                        BorderRadius.vertical(top: Radius.circular(15)),
-                  ),
-                  child: Image.network(
-                      '${ApiService.imageBaseUrl}${movie.poster}'),
+          child: Column(
+            children: [
+              Container(
+                width: (movieState == 'Upcoming') ? 150 : 140,
+                height: (movieState == 'Upcoming') ? 140 : null,
+                clipBehavior: Clip.hardEdge,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
                 ),
-                Text(
-                  movie.title,
-                  maxLines: 2,
-                  softWrap: true,
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.aBeeZee(
-                    color: Colors.white70,
-                    fontSize: Sizes.size20,
-                    fontWeight: FontWeight.w600,
-                  ),
+                child: Image.network(
+                  '${ApiService.imageBaseUrl}${movie.poster}',
+                  fit: BoxFit.cover,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         );
       },
-      separatorBuilder: (context, index) => Gaps.h16,
+      separatorBuilder: (context, index) => Gaps.h10,
     );
   }
 }
